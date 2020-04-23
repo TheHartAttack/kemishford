@@ -1,0 +1,333 @@
+@import 'vars'
+@import 'mixins'
+@import 'keyframes'
+@import 'fonts'
+
+*
+  padding: 0
+  margin: 0
+
+html
+  font-size: 16px
+  @media (max-width: $small)
+    font-size: 12px
+  background:
+    color: $white
+
+p, span
+  font-size: 1rem
+  line-height: 1.5rem
+  color: $black
+  font-family: "Montserrat"
+
+li
+  color: $black
+  font-family: "Montserrat"
+
+h1, h2, h3, h4, h5, h6
+  font-family: "Avenir"
+
+header
+  display: flex
+  justify-content: space-around
+  align-items: center
+  width: 100%
+  background-color: $blue
+  height: 25vh
+  color: $white
+  div
+    flex: 1
+    text-align: center
+    @media (max-width: $small)
+      flex: unset
+    h2
+      font-weight: lighter
+  @media (max-width: $small)
+    flex-direction: column
+
+#main-title
+  padding: $smallmargin 0px $margin 0px
+  @media (max-width: $small)
+    padding: $smallmargin 0px
+  @include noUserSelect
+  h1, h2
+    font-family: "Avenir"
+  h1
+    font-size: 4rem
+    @media (max-width: $small)
+      line-height: 4rem
+  h2
+    font-size: 2rem
+
+#email, #phone
+  @media (max-width: $small)
+    display: none
+
+#resp-head
+  display: none
+  margin-bottom: $smallmargin
+  @media (max-width: $small)
+    display: block
+
+.slideshow
+  position: relative
+  height: 75vh
+  //@media (max-width: $small)
+    height: 320px
+
+.slide
+  position: absolute
+  height: 100%
+  width: 100%
+  opacity: 0
+  transition: 1000ms ease-in-out
+  background:
+    size: cover
+    repeat: no-repeat
+  &:nth-of-type(1)
+    opacity: 1
+    background:
+      image: url(../img/1.jpg)
+      position: center
+  &:nth-of-type(2)
+    background:
+      image: url(../img/2.jpg)
+      position: center
+  &:nth-of-type(3)
+    background:
+      image: url(../img/3.jpg)
+      position: bottom
+
+.slide-button
+  position: absolute
+  bottom: 20px
+  transform: translatex(-50%)
+  height: 10px
+  width: 10px
+  border-radius: 100%
+  cursor: pointer
+  opacity: 0.5
+  transition: 1000ms ease-in-out
+  background:
+    color: $white
+  @media (max-width: $small)
+    height: 20px
+    width: 20px
+
+.slide-button-1
+  opacity: 1
+  left: calc(50% - 20px)
+  @media (max-width: $small)
+    left: calc(50% - 40px)
+
+.slide-button-2
+  left: calc(50%)
+
+.slide-button-3
+  left: calc(50% + 20px)
+  @media (max-width: $small)
+    left: calc(50% + 40px)
+
+section
+  display: flex
+  padding: $largemargin
+  max-width: 1470px
+  margin: auto
+  @media (max-width: $small)
+    padding: $smallmargin
+    flex-direction: column
+  h2
+    line-height: 1rem
+    font-family: "Oleo"
+    font-weight: lighter
+
+.container
+  flex: 1
+  @media (max-width: $small)
+    padding-bottom: $margin
+  text-align: center
+  h2
+    font-size: 1.5rem
+    margin-bottom: $margin
+    @media (max-width: $small)
+      margin-bottom: $smallmargin
+  p
+    margin-bottom: $margin
+    @media (max-width: $small)
+      margin-bottom: $smallmargin
+
+.about
+  flex: 2
+  margin-right: $margin
+  @media (max-width: $small)
+    margin-right: 0
+    padding-top: $smallmargin
+  p
+    &:last-of-type
+      margin-bottom: 0
+
+.services
+  margin-left: $margin
+  @media (max-width: $small)
+    margin-left: 0
+  ul
+    padding-left: 20px
+    li
+      font-size: 1.25rem
+      text-align: left
+      margin: 6px 0px
+      &:first-of-type
+        margin-top: 0
+      &:last-of-type
+        margin-bottom: 0
+
+.gallery-inner
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  margin: -10px
+  @media (max-width: $small)
+    margin: 0
+  img
+    width: calc(25% - 20px)
+    margin: 10px
+    cursor: zoom-in
+    object-fit: cover
+    @media (max-width: $small)
+      width: 100%
+      margin: 0 0 $smallmargin 0
+      &:last-of-type
+        margin: 0
+
+.fullsize
+  width: 100% !important
+  display: block !important
+  height: auto !important
+  cursor: zoom-out !important
+
+.testimonials
+  background-color: $blue
+  max-width: unset
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: $largemargin * 2
+  color: $white
+  h2
+    margin-bottom: $largemargin
+  .testamonials-inner
+    max-width: 1470px
+    position: relative
+    @media (max-width: $small)
+      margin-right: 0
+    .quote
+      max-width: 980px
+      position: absolute
+      top: 0
+      left: 0
+      opacity: 0
+      transition: all 500ms ease-in-out
+      &:first-of-type
+        opacity: 1
+        position: static
+      &:before
+        content: '“'
+        font-size: 64px
+        position: absolute
+        left: -48px
+        top: -24px
+      &:after
+        content: '”'
+        font-size: 64px
+        position: absolute
+        right: -48px
+        bottom: -24px
+      p
+        position: relative
+        margin-bottom: 0
+        font-style: italic
+        color: $white
+
+.contactform
+  flex: 1
+  margin-left: $margin
+  @media (max-width: $small)
+    margin-left: 0
+
+#contact-form
+  padding: 0px 10px
+  display: flex
+  flex-direction: column
+  align-items: center
+  input, textarea
+    font-family: "Montserrat"
+    margin-bottom: 10px
+    padding: 0 10px
+    border: none
+    height: 2rem
+    width: 100%
+    font-size: 1rem
+    line-height: 2rem
+    resize: none
+    &:nth-of-type(5), &:nth-of-type(6), &:nth-of-type(7), &:nth-of-type(8)
+      margin-bottom: 1px
+  textarea
+    height: 15rem
+  button
+    width: 50%
+    height: 3rem
+    font-size: 1rem
+    font-family: "Montserrat"
+    cursor: auto
+
+footer
+  display: flex
+  width: 100%
+  color: $white
+  @media (max-width: $small)
+    flex-direction: column
+  background:
+    color: $blue
+  div
+    flex: 1
+    margin: $largemargin
+    @media (max-width: $small)
+      margin: $margin
+    h3
+      font-weight: lighter
+
+.contact
+  @media (max-width: $small)
+    display: none
+
+.resp-cont
+  display: none
+  justify-content: center
+  align-items: center
+  text-align: center
+  margin-top: 0
+  @media (max-width: $small)
+    display: flex
+
+.social
+  display: flex
+  align-items: center
+  justify-content: center
+
+#facebook
+  height: 48px
+  width: 48px
+  cursor: pointer
+  padding: 10px
+  svg
+    fill: $white
+    transition: 250ms ease-in-out
+  &:hover
+    svg
+      fill: $blue
+      background-color: $white
+
+.address
+  text-align: right
+  @media (max-width: $small)
+    display: none
